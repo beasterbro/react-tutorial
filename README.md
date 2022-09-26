@@ -10,6 +10,8 @@ mkdir your-app-name
 cd your-app-name
 npx degit criesbeck/react-vitest
 npm install
+files MUST have .jsx extension instead of .js
+MUST use Vitest for testing instead of Jest
 ```
 
 ## Test
