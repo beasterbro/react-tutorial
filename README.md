@@ -43,7 +43,7 @@ Two tests should run and pass.
 | npm run build  | Builds the app for production to the `dist` folder. |
 | npm run serve  | Serves the production build from the `dist` folder. |
 | npm test       | Starts a Jest-like test loop                        |
-| npm run build        | Rebuilds the website to be run on the web server                        |
+| npm run build        | Rebuilds the website to be run on the web server which is optimized, compacted, and placed into few files                       |
 firebase deploy | Uploads the lastes local build to the firebase server
 
 
