@@ -4,7 +4,7 @@ const CourseList = ({courses}) => {
     return (
       <div>
         <ul>
-        {Object.values(courses).map( (course) => <CourseListItem key={course.number} term={course.term} number={course.number} meets={course.meets} title={course.title} />) }
+        {Object.values(courses).map( (course) => <CourseListItem key={Object.keys(course)} term={course.term} number={course.number} meets={course.meets} title={course.title} />) }
         </ul>
       </div>
     );

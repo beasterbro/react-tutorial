@@ -2,7 +2,7 @@
 const CourseListItem = ({term, number,meets,title}) => {  
     return (
         <div>
-      <li> {[term, number, meets, title]} </li>
+      <li> {[term, number, meets, title].join(' ')} </li>
       </div>
     );
   };
