@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
-const schedule = {
+import Banner from './components/Banner'
+import CourseList from './components/CourseList'
+export const schedule = {
   title: "CS Courses for 2018-2019",
   "courses": {
     "F101" : {
@@ -39,9 +40,8 @@ const App = () => {
 
   return (
     <div>
-      <h1>{schedule.title}</h1>
-      <Banner/>
-      <CourseList/>
+      <Banner title={schedule.title}/>
+      <CourseList courses={schedule.courses}/>
       <p>Today is {day}, {date}.</p>
     </div>
   );
