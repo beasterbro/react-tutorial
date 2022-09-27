@@ -1,8 +1,8 @@
 
-const CourseListItem = ({course}) => {  
+const CourseListItem = ({term, number,meets,title}) => {  
     return (
         <div>
-      <li> {course} </li>
+      <li> {[term, number, meets, title]} </li>
       </div>
     );
   };
