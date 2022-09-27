@@ -1,6 +1,11 @@
+import CourseListItem from "./CourseItem";
+
 const CourseList = ({courses}) => {  
     return (
       <div>
+        <ul>
+        {Object.entries(courses).map( (course,id) => <CourseListItem key={id} course={course.title} />) }
+        </ul>
       </div>
     );
   };

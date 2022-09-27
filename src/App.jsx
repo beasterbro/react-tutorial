@@ -4,7 +4,7 @@ import './App.css';
 import Banner from './components/Banner'
 import CourseList from './components/CourseList'
 export const schedule = {
-  title: "CS Courses for 2018-2019",
+  title: "CS Courses for 2022-2023",
   "courses": {
     "F101" : {
       "term": "Fall",
