@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 const schedule = {
-  title: "CS Courses for 2018-2019"
+  title: "CS Courses for 2022-2023"
 };
 
 const App = () => {
