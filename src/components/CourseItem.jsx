@@ -2,7 +2,7 @@
 const CourseListItem = ({term, number,meets,title}) => {  
     return (
         <div>
-      <li> {term} CS {number}: {title} </li>
+       {term} CS {number}: {title} 
       </div>
     );
   };
