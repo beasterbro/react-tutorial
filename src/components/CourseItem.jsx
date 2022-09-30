@@ -1,6 +1,6 @@
 import './CourseItem.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-const CourseListItem = ({term, number,meets,title}) => {  
+const CourseItem = ({term, number,meets,title}) => {  
     return (
         <div className='card ,m-1 p-2'>
           <h4 className='card-title'>{term} CS {number}</h4>
@@ -12,4 +12,4 @@ const CourseListItem = ({term, number,meets,title}) => {
     );
   };
 
-  export default CourseListItem;
+  export default CourseItem;
