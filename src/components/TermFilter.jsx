@@ -1,4 +1,3 @@
-import { useState } from "react";
 
 const terms = {
     Spring: 'Breakfast items...',
@@ -25,8 +24,7 @@ const TermSelector = ({ selection, setSelection }) => (
 );
 
 
-const TermFilter = () => {
-    const [selection, setSelection] = useState(() => Object.keys(terms)[0]);
+const TermFilter = (selection,setSelection) => {
     return (
         <div>
             <TermSelector selection={selection} setSelection={setSelection} />
