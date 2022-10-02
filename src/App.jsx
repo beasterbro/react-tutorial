@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 import Banner from './components/Banner'
 import CourseList from './components/CourseList'
