@@ -29,7 +29,6 @@ const App = () => {
   const setTerm = (val) => {
     setSelection(val)
   }
-
   return (
     <QueryClientProvider client={queryClient}>
       <div>

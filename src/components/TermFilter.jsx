@@ -16,13 +16,14 @@ const TermSelector = ({terms, selection, setSelection} ) => (
     //{console.log(terms)}
     <div className="btn-group">
         {
-            terms.terms.map(term => <TermButton key={term} term={term} selection={terms.selection} setSelection={terms.setSelection} />)
+            terms.map(term => <TermButton key={term} term={term} selection={selection} setSelection={setSelection} />)
         }
     </div>
 );
 
 
-const TermFilter = (terms, selection,setSelection) => {
+const TermFilter = ( {terms, selection,setSelection} ) => {
+    console.log(terms)
     return (
         <div>
             <TermSelector terms={terms} selection={selection} setSelection={setSelection} />
