@@ -1,10 +1,3 @@
-
-const terms = {
-    Spring: 'Breakfast items...',
-    Fall: 'Lunch items...',
-    Winter: 'Dinner items...'
-};
-
 const TermButton = ({ term, selection, setSelection }) => (
     <div>
         <input type="radio" id={term} className="btn-check" checked={term === selection} autoComplete="off"
@@ -15,19 +8,19 @@ const TermButton = ({ term, selection, setSelection }) => (
     </div>
 );
 
-const TermSelector = ({ selection, setSelection }) => (
+const TermSelector = ({terms, selection, setSelection} ) => {
     <div className="btn-group">
         {
-            Object.keys(terms).map(term => <TermButton key={term} term={term} selection={selection} setSelection={setSelection} />)
+            Object.values(terms).map(term => <TermButton key={term} term={term} selection={selection} setSelection={setSelection} />)
         }
     </div>
-);
+};
 
 
-const TermFilter = (selection,setSelection) => {
+const TermFilter = (terms, selection,setSelection) => {
     return (
         <div>
-            <TermSelector selection={selection} setSelection={setSelection} />
+            <TermSelector terms={terms} selection={selection} setSelection={setSelection} />
         </div>
     );
 }

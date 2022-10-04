@@ -6,11 +6,7 @@ import TermFilter from './components/TermFilter'
 import Banner from './components/Banner'
 import CourseList from './components/CourseList'
 
-const terms = {
-  Spring: 'Breakfast items...',
-  Fall: 'Lunch items...',
-  Winter: 'Dinner items...'
-};
+const terms = ['Fall', 'Winter','Spring']
 
 const FetchSchedule = (selection) => {
   const [data, isLoading, error] = useJsonQuery('https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php');
@@ -30,13 +26,16 @@ const App = () => {
   const today = new Date();
   const day = today.toLocaleString([], { weekday: 'long' });
   const date = today.toLocaleDateString([], { dateStyle: 'long' })
-  const [selection , setSelection] = useState(() => Object.keys(terms)[0]);
+  const [selection , setSelection] = useState(() => terms[0]);
+  const setTerm = (val) => {
+    setSelection(val)
+  }
 
   return (
     <QueryClientProvider client={queryClient}>
       <div>
         <p>Today is {day}, {date}.</p>
-        <TermFilter selection={selection} setSelection={setSelection}/>
+        <TermFilter terms={terms} selection={selection} setSelection={setTerm}/>
       </div>
       <div>
         <FetchSchedule selection={selection}/>
