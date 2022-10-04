@@ -1,6 +1,10 @@
 const TermButton = ({ term, selection, setSelection }) => (
+    //console.log(term);
+    //console.log(selection);
+    //console.log(setSelection);
+
     <div>
-        <input type="radio" id={term} className="btn-check" checked={term === selection} autoComplete="off"
+        <input type="radio" id={term} className="btn-check" checked={term == selection} autoComplete="off"
             onChange={() => setSelection(term)} />
         <label className="btn btn-success mb-1 p-2" htmlFor={term}>
             {term}
@@ -8,13 +12,14 @@ const TermButton = ({ term, selection, setSelection }) => (
     </div>
 );
 
-const TermSelector = ({terms, selection, setSelection} ) => {
+const TermSelector = ({terms, selection, setSelection} ) => (
+    //{console.log(terms)}
     <div className="btn-group">
         {
-            Object.values(terms).map(term => <TermButton key={term} term={term} selection={selection} setSelection={setSelection} />)
+            terms.terms.map(term => <TermButton key={term} term={term} selection={terms.selection} setSelection={terms.setSelection} />)
         }
     </div>
-};
+);
 
 
 const TermFilter = (terms, selection,setSelection) => {

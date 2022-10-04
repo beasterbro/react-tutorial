@@ -14,8 +14,7 @@ const FetchSchedule = (selection) => {
   if (error) return <h1>Error loading user data: {`${error}`}</h1>;
   if (isLoading) return <h1>Loading user data...</h1>;
   if (!data) return <h1>No user data found</h1>;
-  console.log(data);
-  return <div><Banner title={data.title} /><CourseList courses={data.courses} selection={selection} /></div>//data.users.map(user => <div key={user.id}>{user.firstName} {user.lastName}</div>);
+  return <div><Banner title={data.title} /><CourseList courses={data.courses} selection={selection.selection} /></div>//data.users.map(user => <div key={user.id}>{user.firstName} {user.lastName}</div>);
 }
 
 const queryClient = new QueryClient();
