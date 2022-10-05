@@ -23,7 +23,6 @@ const TermSelector = ({terms, selection, setSelection} ) => (
 
 
 const TermFilter = ( {terms, selection,setSelection} ) => {
-    console.log(terms)
     return (
         <div>
             <TermSelector terms={terms} selection={selection} setSelection={setSelection} />

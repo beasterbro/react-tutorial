@@ -1,9 +1,9 @@
 import CourseItem from "./CourseItem";
 import './CourseItem.css'
-const CourseGrid = ({courses, selection}) => { 
+const CourseGrid = ({courses, selection, selectedCourses, toggleSelected}) => { 
     return (
       <div className="course-list">
-        {Object.values(courses).filter( (course) => ( course.term == selection ) ).map( course => <CourseItem key={Object.keys(course)} term={course.term} number={course.number} meets={course.meets} title={course.title} />) }
+        {Object.values(courses).filter( (course) => ( course.term == selection ) ).map( course => <CourseItem key={Object.keys(course)} course={course} selectedCourses={selectedCourses} toggleSelected={toggleSelected}/>) }
       </div>
     );
   };

@@ -8,3 +8,8 @@
     height: 7vw;
     object-fit: cover;
 }
+
+.selected {
+    background-color: lemonchiffon;
+    color:  green;
+}
