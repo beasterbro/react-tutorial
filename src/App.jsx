@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useJsonQuery } from './utilities/fetch';
 import TermFilter from './components/TermFilter'
 import Banner from './components/Banner'
-import CourseList from './components/CourseList'
+import CourseList from './components/CourseGrid'
 
 const terms = ['Fall', 'Winter','Spring']
 
