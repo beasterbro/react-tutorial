@@ -9,7 +9,7 @@
     object-fit: cover;
 }
 
-.selected {
+.card-body .selected {
     background-color: lemonchiffon;
     color:  green;
 }

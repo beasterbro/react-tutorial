@@ -10,12 +10,11 @@ const terms = ['Fall', 'Winter','Spring']
 
 const FetchSchedule = ({selection, selectedCourses, toggleSelected}) => {
   const [data, isLoading, error] = useJsonQuery('https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php');
-  console.log(toggleSelected)
   if (error) return <h1>Error loading user data: {`${error}`}</h1>;
   if (isLoading) return <h1>Loading user data...</h1>;
   if (!data) return <h1>No user data found</h1>;
   courses = data.courses;
-  return <div><Banner title={data.title} /><CourseGrid courses={data.courses} selection={selection.selection} selectedCourses={selectedCourses} toggleSelected={toggleSelected} /></div>
+  return <div><Banner title={data.title} /><CourseGrid courses={data.courses} selection={selection} selectedCourses={selectedCourses} toggleSelected={toggleSelected} /></div>
 }
 
 const queryClient = new QueryClient();
@@ -23,7 +22,8 @@ var courses;
 //export const schedule 
 
 const App = () => {
-  const [selection , setSelection, selectedCourses, setSelectionCourse] = useState(() => terms[0]);
+  const [selection , setSelection] = useState(() => terms[0]);
+  const [selectedCourses, setSelectionCourse] = useState([])
   const today = new Date();
   const day = today.toLocaleString([], { weekday: 'long' });
   const date = today.toLocaleDateString([], { dateStyle: 'long' })
