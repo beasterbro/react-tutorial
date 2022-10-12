@@ -5,6 +5,8 @@ import { useJsonQuery } from './utilities/fetch';
 import TermFilter from './components/TermFilter'
 import Banner from './components/Banner'
 import CourseGrid from './components/CourseGrid'
+import SchedulePopup from './components/SchedulePopup';
+import CourseList from './components/CourseList';
 
 const terms = ['Fall', 'Winter','Spring']
 
@@ -24,10 +26,13 @@ var courses;
 const App = () => {
   const [selection , setSelection] = useState(() => terms[0]);
   const [selectedCourses, setSelectionCourse] = useState([])
+  const [open, setOpen] = useState(false)
   const today = new Date();
   const day = today.toLocaleString([], { weekday: 'long' });
   const date = today.toLocaleDateString([], { dateStyle: 'long' })
 
+  const openModal = () => setOpen(true);
+  const closeModal = () => setOpen(false)
   const toggleSelected = (course) => setSelectionCourse(
     selectedCourses.includes(course)
     ? selectedCourses.filter(x => x !== course)
@@ -42,6 +47,10 @@ const App = () => {
       <div>
         <p>Today is {day}, {date}.</p>
         <TermFilter terms={terms} selection={selection} setSelection={setTerm}/>
+        <button className='btn btn-outline-dark' onClick={openModal}><i className='bi bi-cart4'></i></button>
+        <SchedulePopup open={open} close={closeModal}>
+          <CourseList selectedCourses={selectedCourses}/>
+        </SchedulePopup>
       </div>
       <div>
         <FetchSchedule selection={selection} selectedCourses={selectedCourses} toggleSelected={toggleSelected}/>
