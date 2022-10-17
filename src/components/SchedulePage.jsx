@@ -5,7 +5,8 @@ import FetchSchedule from './Schedule';
 
 const SchedulePage = ({terms,selection,setTerm,
                         openModal,open,closeModal,
-                        selectedCourses,toggleSelected}) => {
+                        selectedCourses,toggleSelected,
+                        editCourse, setEditCourse}) => {
     const today = new Date();
     const day = today.toLocaleString([], { weekday: 'long' });
     const date = today.toLocaleDateString([], { dateStyle: 'long' })
@@ -22,7 +23,7 @@ const SchedulePage = ({terms,selection,setTerm,
                 </SchedulePopup>
             </div>
             <div>
-                <FetchSchedule selection={selection} selectedCourses={selectedCourses} toggleSelected={toggleSelected} />
+                <FetchSchedule selection={selection} selectedCourses={selectedCourses} toggleSelected={toggleSelected} setEditCourse={setEditCourse}/>
             </div>
         </div>
     );

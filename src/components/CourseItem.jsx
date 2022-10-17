@@ -1,7 +1,7 @@
 import './CourseItem.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { catchTimeConflicts } from '../utilities/timing';
-const CourseItem = ({course, selectedCourses, toggleSelected}) => { 
+const CourseItem = ({course, selectedCourses, toggleSelected, setEditCourse}) => { 
     return (//TODO: add toggle selected
     <div className='card m-1 p-2'>
         <div onClick={() => toggleSelected(course)} >
@@ -12,7 +12,7 @@ const CourseItem = ({course, selectedCourses, toggleSelected}) => {
             <p className='card-footer bg-transparent'>{course.meets}</p>
           </div>
       </div>
-      <button>Edit</button>
+      <button onClick={setEditCourse(course)}>Edit</button>
       </div>
     );
   };
