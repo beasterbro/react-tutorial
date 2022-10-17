@@ -47,8 +47,9 @@ const App = () => {
       <div>
         <p>Today is {day}, {date}.</p>
         <TermFilter terms={terms} selection={selection} setSelection={setTerm}/>
-        <button className='btn btn-outline-dark' onClick={openModal}><i className='bi bi-cart4'></i></button>
+        <button className='btn btn-outline-dark' onClick={openModal}><i className='bi bi-cart4'>Course Plan</i></button>
         <SchedulePopup open={open} close={closeModal}>
+          Course Plan
           <CourseList selectedCourses={selectedCourses}/>
         </SchedulePopup>
       </div>
