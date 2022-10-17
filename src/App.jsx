@@ -1,27 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useState } from "react";
-import { useJsonQuery } from './utilities/fetch';
 import TermFilter from './components/TermFilter'
-import Banner from './components/Banner'
-import CourseGrid from './components/CourseGrid'
 import SchedulePopup from './components/SchedulePopup';
 import CourseList from './components/CourseList';
 import { catchTimeConflicts } from './utilities/timing';
+import { FetchSchedule } from './components/Schedule';
 
 const terms = ['Fall', 'Winter','Spring']
 
-const FetchSchedule = ({selection, selectedCourses, toggleSelected}) => {
-  const [data, isLoading, error] = useJsonQuery('https://courses.cs.northwestern.edu/394/guides/data/cs-courses.php');
-  if (error) return <h1>Error loading user data: {`${error}`}</h1>;
-  if (isLoading) return <h1>Loading user data...</h1>;
-  if (!data) return <h1>No user data found</h1>;
-  courses = data.courses;
-  return <div><Banner title={data.title} /><CourseGrid courses={data.courses} selection={selection} selectedCourses={selectedCourses} toggleSelected={toggleSelected} /></div>
-}
-
 const queryClient = new QueryClient();
-var courses;
 //export const schedule 
 
 const App = () => {
