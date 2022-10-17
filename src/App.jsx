@@ -5,6 +5,9 @@ import { useJsonQuery } from './utilities/fetch';
 import TermFilter from './components/TermFilter'
 import Banner from './components/Banner'
 import CourseGrid from './components/CourseGrid'
+import SchedulePopup from './components/SchedulePopup';
+import CourseList from './components/CourseList';
+import { catchTimeConflicts } from './utilities/timing';
 
 const terms = ['Fall', 'Winter','Spring']
 
@@ -31,6 +34,8 @@ const App = () => {
   const toggleSelected = (course) => setSelectionCourse(
     selectedCourses.includes(course)
     ? selectedCourses.filter(x => x !== course)
+    : catchTimeConflicts(course,selectedCourses)
+    ? selectedCourses
     : [...selectedCourses,course]
     );
 
