@@ -38,7 +38,7 @@ const App = () => {
                            openModal={openModal} open={open} closeModal={closeModal} 
                 selectedCourses={selectedCourses} toggleSelected={toggleSelected}
                 editCourse={editCourse} setEditCourse={setEditCourse}/>} />
-      <Route path="/edit" element={<CourseEditor course={selectedCourses[0]} />} />
+      <Route path="/edit" element={<CourseEditor course={editCourse} />} />
     </Routes>
   </BrowserRouter>
     </QueryClientProvider>

@@ -1,12 +1,17 @@
 //import { useDbUpdate } from '../utilities/firebase';
 import { useFormData } from '../utilities/useFormData';
 
-const validateUserData = (key, val) => {
+const validateCourseData = (key, val) => {
+  terms = ['Fall','Spring', 'Winter']
   switch (key) {
-    case 'firstName': case 'lastName':
+    case 'title':
       return /(^\w\w)/.test(val) ? '' : 'must be least two characters';
-    case 'email':
-      return /^\w+@\w+[.]\w+/.test(val) ? '' : 'must contain name@domain.top-level-domain';
+    case 'number':
+      return /^\d+$/.test(val) ? '' : 'must contain only numbers';
+    case 'meets':
+      return /[a-zA-Z]+ \d\d:\d\d-\d\d:\d\d/i.test(val) ? '' : 'Must be in valid meets format';
+    case 'term':
+      return terms.contains(val) ? '' : 'Must be a valid term'
     default: return '';
   }
 };
@@ -31,21 +36,23 @@ const ButtonBar = ({message, disabled}) => {
   );
 };
 
-const CourseEditor = ({course}) => {
+const CourseEditor = ({course, setEditCourse}) => {
+  console.log(course)
   //const [update, result] = useDbUpdate(`/users/${course.id}`);
   const [state, change] = useFormData(validateCourseData, course);
-  // const submit = (evt) => {
-  //   evt.preventDefault();
-  //   if (!state.errors) {
-  //     update(state.values);
-  //   }
-  // };
+  const submit = (evt) => {
+    evt.preventDefault();
+    if (!state.errors) {
+      update(state.values);
+    }
+  };
 
   return (
-    <form onSubmit={submit} noValidate className={state.errors ? 'was-validated' : null}>
-      <InputField name="firstName" text="First Name" state={state} change={change} />
-      <InputField name="lastName" text="Last Name" state={state} change={change} />
-      <InputField name="email" text="Email" state={state} change={change} />
+    <form onSubmit={() => console.log('sub')} noValidate className={state.errors ? 'was-validated' : null}>
+      <InputField name="title" text="Title" state={state} change={change} />
+      <InputField name="term" text="Term" state={state} change={change} />
+      <InputField name="number" text="Number" state={state} change={change} />
+      <InputField name="meets" text="Meets" state={state} change={change} />
       {/*<ButtonBar message={result?.message} />*/}
     </form>
   )
