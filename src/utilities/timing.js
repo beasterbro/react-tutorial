@@ -7,7 +7,7 @@ Classes with an empty meeting string never have a time conflict.
 */
 
 export const catchTimeConflicts = (course, selectedCourses) => {
-    console.log(course)
+    // console.log(course)
     let potentialConflicts = selectedCourses.filter(c => c.term === course.term)
     // console.log(potentialConflicts)
     // console.log('day: '+isSameDay(course,potentialConflicts)+' time: '+isSameTime(course,potentialConflicts))
