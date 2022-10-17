@@ -3,7 +3,7 @@ import { useFormData } from '../utilities/useFormData';
 import { useNavigate } from 'react-router-dom';
 
 const validateCourseData = (key, val) => {
-  terms = ['Fall','Spring', 'Winter']
+  var terms = ['Fall','Spring', 'Winter']
   switch (key) {
     case 'title':
       return /(^\w\w)/.test(val) ? '' : 'must be least two characters';
@@ -39,7 +39,7 @@ const ButtonBar = ({message, disabled}) => {
 
 const CourseEditor = ({course, setEditCourse}) => {
   console.log(course)
-  const [update, result] = useDbUpdate(`/users/${course.id}`);
+  const [update, result] = useDbUpdate(`/courses/${course.term[0]+course.number}`);
   const [state, change] = useFormData(validateCourseData, course);
   const submit = (evt) => {
     evt.preventDefault();
