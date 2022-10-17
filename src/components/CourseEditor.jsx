@@ -9,7 +9,7 @@ const validateCourseData = (key, val) => {
     case 'number':
       return /^\d+$/.test(val) ? '' : 'must contain only numbers';
     case 'meets':
-      return /[a-zA-Z]+ \d\d:\d\d-\d\d:\d\d/i.test(val) ? '' : 'Must be in valid meets format';
+      return /[a-zA-Z]+ \d\d:\d\d-\d\d:\d\d/i.test(val) || val===''? '' : 'Must be in valid meets format e.g. MWF 12:00-13:20';
     case 'term':
       return terms.contains(val) ? '' : 'Must be a valid term'
     default: return '';
