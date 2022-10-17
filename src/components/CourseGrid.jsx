@@ -5,7 +5,7 @@ const CourseGrid = ({courses, selection, selectedCourses, toggleSelected, setEdi
       <div className="course-list">
         {
         Object.values(courses).filter( (course) => ( course.term == selection ) ).map(
-           (course) => <CourseItem key={Object.keys(course)} course={course} selectedCourses={selectedCourses} 
+           (course) => <CourseItem key={course.number} course={course} selectedCourses={selectedCourses} 
                                     toggleSelected={toggleSelected} setEditCourse={setEditCourse}/>) }
       </div>
     );

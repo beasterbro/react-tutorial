@@ -1,4 +1,4 @@
-import { useDbUpdate } from '../utilities/firebase';
+//import { useDbUpdate } from '../utilities/firebase';
 import { useFormData } from '../utilities/useFormData';
 
 const validateUserData = (key, val) => {
@@ -32,21 +32,21 @@ const ButtonBar = ({message, disabled}) => {
 };
 
 const CourseEditor = ({course}) => {
-  const [update, result] = useDbUpdate(`/users/${course.id}`);
+  //const [update, result] = useDbUpdate(`/users/${course.id}`);
   const [state, change] = useFormData(validateCourseData, course);
-  const submit = (evt) => {
-    evt.preventDefault();
-    if (!state.errors) {
-      update(state.values);
-    }
-  };
+  // const submit = (evt) => {
+  //   evt.preventDefault();
+  //   if (!state.errors) {
+  //     update(state.values);
+  //   }
+  // };
 
   return (
     <form onSubmit={submit} noValidate className={state.errors ? 'was-validated' : null}>
       <InputField name="firstName" text="First Name" state={state} change={change} />
       <InputField name="lastName" text="Last Name" state={state} change={change} />
       <InputField name="email" text="Email" state={state} change={change} />
-      <ButtonBar message={result?.message} />
+      {/*<ButtonBar message={result?.message} />*/}
     </form>
   )
 };

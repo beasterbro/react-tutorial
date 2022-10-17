@@ -12,7 +12,7 @@ const CourseItem = ({course, selectedCourses, toggleSelected, setEditCourse}) =>
             <p className='card-footer bg-transparent'>{course.meets}</p>
           </div>
       </div>
-      <button onClick={setEditCourse(course)}>Edit</button>
+      <button onClick={() => setEditCourse(course)}>Edit</button>
       </div>
     );
   };
