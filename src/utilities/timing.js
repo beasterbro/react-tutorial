@@ -6,20 +6,12 @@ The start time is always strictly less than the ending time. Times run from 0:00
 Classes with an empty meeting string never have a time conflict.
 */
 
-//TODO: Selectable if and only if no conflict
 export const catchTimeConflicts = (course, selectedCourses) => {
     console.log(course)
     let potentialConflicts = selectedCourses.filter(c => c.term === course.term)
-    console.log(potentialConflicts)
-    if (potentialConflicts) {//If in same term
-
-        if (isSameDay(course, potentialConflicts)) {//Have at least one day in common if any in first substring match
-            if (isSameTime(course, potentialConflicts)) {
-                return true;
-            }
-        }
-    }
-    return false
+    // console.log(potentialConflicts)
+    // console.log('day: '+isSameDay(course,potentialConflicts)+' time: '+isSameTime(course,potentialConflicts))
+    return isSameDay(course,potentialConflicts) && isSameTime(course,potentialConflicts)
 }
 const isSameTime = (course, potentialConflicts) => {
     var times = potentialConflicts.map(c => c.meets.split(' ')[1])
@@ -27,9 +19,11 @@ const isSameTime = (course, potentialConflicts) => {
     return hasOverlap(t,times)
 }
 const hasOverlap = (time, times) => {
-    var timeRange = time.split(':')
-    return times.some(t => t.split(':').some( val => timeRange[0] <= val 
-                                                    && val <= timeRange[1]))
+    var timeRange = time.split('-').map(ti => ti.replace(':','.'))
+    // console.log(timeRange)
+    // console.log(times)
+    return times.some(t => t.split('-').some( val => timeRange[0] <= val.replace(':','.') 
+                                                    && val.replace(':',".") <= timeRange[1]))
 }
 const isSameDay = (course, potentialConflicts) => {
     var days = potentialConflicts.map(c => c.meets.split(' ')[0])
