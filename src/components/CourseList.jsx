@@ -1,7 +1,6 @@
 import './CourseList.css';
 
 const CourseList = ({selectedCourses}) => {
-console.log(selectedCourses);
 return (
   <div className="cart">
     {
