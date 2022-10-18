@@ -42,8 +42,9 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
+        <Banner title={title} profile={profile}/>
           <Route path="/" element={
-            <SchedulePage title={title} profile={profile} setTitle={setTitle} terms={terms} selection={selection} setTerm={setTerm}
+            <SchedulePage setTitle={setTitle} terms={terms} selection={selection} setTerm={setTerm}
               openModal={openModal} open={open} closeModal={closeModal}
               selectedCourses={selectedCourses} toggleSelected={toggleSelected}
               editCourse={editCourse} setEditCourse={setEditCourse} />} />

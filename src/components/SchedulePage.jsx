@@ -4,13 +4,12 @@ import CourseList from './CourseList';
 import FetchSchedule from './Schedule';
 import Banner from './Banner';
 
-const SchedulePage = ({ title, profile, setTitle, terms,selection,setTerm,
+const SchedulePage = ({ setTitle, terms,selection,setTerm,
                         openModal,open,closeModal,
                         selectedCourses,toggleSelected,
                         editCourse, setEditCourse}) => {
     return (
         <div>
-                  <Banner title={title} profile={profile}/>
             <div>
                 <TermFilter terms={terms} selection={selection} setSelection={setTerm} />
                 <button className='btn btn-outline-dark' onClick={openModal}><i className='bi bi-cart4'>Course Plan</i></button>
