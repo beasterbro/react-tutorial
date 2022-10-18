@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { initializeApp } from "firebase/app";
 import { getDatabase, onValue, ref, update } from 'firebase/database';
+import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
 
 
 const firebaseConfig = {
@@ -18,6 +19,31 @@ const firebaseConfig = {
 const firebase = initializeApp(firebaseConfig);
 const database = getDatabase(firebase);
 
+const firebaseSignOut = () => signOut(getAuth(firebase));
+
+const makeResult = (error) => {
+  const timestamp = Date.now();
+  const message = error?.message || `Updated: ${new Date(timestamp).toLocaleString()}`;
+  return { timestamp, error, message };
+};
+
+
+export { firebaseSignOut as signOut };
+
+export const useAuthState = () => {
+  const [user, setUser] = useState();
+  
+  useEffect(() => (
+    onAuthStateChanged(getAuth(firebase), setUser)
+  ));
+
+  return [user];
+};
+
+export const signInWithGoogle = () => {
+  signInWithPopup(getAuth(firebase), new GoogleAuthProvider());
+};
+
 export const useDbData = (path) => {
   const [data, setData] = useState();
   const [error, setError] = useState(null);
@@ -31,12 +57,6 @@ export const useDbData = (path) => {
   ), [ path ]);
 
   return [ data, error ];
-};
-
-const makeResult = (error) => {
-  const timestamp = Date.now();
-  const message = error?.message || `Updated: ${new Date(timestamp).toLocaleString()}`;
-  return { timestamp, error, message };
 };
 
 export const useDbUpdate = (path) => {

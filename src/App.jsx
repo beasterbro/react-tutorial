@@ -33,8 +33,8 @@ const App = () => {
   }
   return (
     <QueryClientProvider client={queryClient}>
-      <Banner title={title} />
       <BrowserRouter>
+      <Banner title={title} />
         <Routes>
           <Route path="/" element={
             <SchedulePage setTitle={setTitle} terms={terms} selection={selection} setTerm={setTerm}
