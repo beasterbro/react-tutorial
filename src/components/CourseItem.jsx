@@ -2,9 +2,10 @@ import './CourseItem.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Link } from 'react-router-dom';
 import { useAuthState } from '../utilities/firebase';
+import { useProfile } from '../utilities/profile';
 
 const CourseItem = ({course, selectedCourses, toggleSelected, setEditCourse }) => {
-  const [user] = useAuthState()
+  const [user] = useProfile()
   return (//TODO: url redirect with passed in course info on Edit button click
     <div className='card m-1 p-2'>
       <div onClick={() => toggleSelected(course)} >
@@ -15,7 +16,7 @@ const CourseItem = ({course, selectedCourses, toggleSelected, setEditCourse }) =
           <p className='card-footer bg-transparent'>{course.meets}</p>
         </div>
       </div>
-      { user && <Link to="/edit" params={{ course: course, setEditCourse: setEditCourse }} onClick={() => setEditCourse(course)}>
+      { user.isAdmin && <Link to="/edit" params={{ course: course, setEditCourse: setEditCourse }} onClick={() => setEditCourse(course)}>
         <button onClick={() => setEditCourse(course)}>Edit</button>
       </Link>}
     </div>

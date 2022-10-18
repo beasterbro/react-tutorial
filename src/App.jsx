@@ -6,6 +6,7 @@ import { catchTimeConflicts } from './utilities/timing';
 import SchedulePage from './components/SchedulePage';
 import CourseEditor from "./components/CourseEditor";
 import Banner from './components/Banner'
+import { useProfile } from './utilities/profile';
 
 const terms = ['Fall', 'Winter', 'Spring']
 
@@ -17,6 +18,8 @@ const App = () => {
   const [open, setOpen] = useState(false)
   const [editCourse, setEditCourse] = useState([])
   const [title,setTitle] = useState([])
+  const [profile, profileLoading, profileError] = useProfile();
+
 
   const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false)
@@ -31,13 +34,16 @@ const App = () => {
   const setTerm = (val) => {
     setSelection(val)
   }
+
+  if (profileError) return <h1>Error loading profile: {`${profileError}`}</h1>;
+  if (profileLoading) return <h1>Loading user profile</h1>;
+  if (!profile) return <h1>No profile data</h1>;
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-      <Banner title={title} />
         <Routes>
           <Route path="/" element={
-            <SchedulePage setTitle={setTitle} terms={terms} selection={selection} setTerm={setTerm}
+            <SchedulePage title={title} profile={profile} setTitle={setTitle} terms={terms} selection={selection} setTerm={setTerm}
               openModal={openModal} open={open} closeModal={closeModal}
               selectedCourses={selectedCourses} toggleSelected={toggleSelected}
               editCourse={editCourse} setEditCourse={setEditCourse} />} />

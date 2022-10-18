@@ -38,7 +38,6 @@ const ButtonBar = ({message, disabled}) => {
 };
 
 const CourseEditor = ({course, setEditCourse}) => {
-  console.log(course)
   const [update, result] = useDbUpdate(`/courses/${course.term[0]+course.number}`);
   const [state, change] = useFormData(validateCourseData, course);
   const submit = (evt) => {
