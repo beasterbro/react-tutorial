@@ -7,7 +7,7 @@ import { useProfile } from '../utilities/profile';
 const CourseItem = ({course, selectedCourses, toggleSelected, setEditCourse }) => {
   const [user] = useProfile()
   return (//TODO: url redirect with passed in course info on Edit button click
-    <div className='card m-1 p-2'>
+    <div className='card m-1 p-2' data-cy="course">
       <div onClick={() => toggleSelected(course)} >
         <h4 className='card-title'>{course.term} CS {course.number}</h4>
         <div className={`card-body ${selectedCourses.includes(course) ? 'selected' : ''}`}>
