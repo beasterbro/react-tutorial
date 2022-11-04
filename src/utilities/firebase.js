@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { initializeApp } from "firebase/app";
-import { getDatabase, onValue, ref, update, connectDatabaseEmulator, connectAuthEmulator } from 'firebase/database';
-import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
+import { getDatabase, onValue, ref, update, connectDatabaseEmulator } from 'firebase/database';
+import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut,connectAuthEmulator } from 'firebase/auth';
 
 
 const firebaseConfig = {
@@ -21,7 +21,6 @@ const database = getDatabase(firebase);
 const auth = getAuth(firebase);
 
 const firebaseSignOut = () => signOut(getAuth(firebase));
-
 if (process.env.REACT_APP_EMULATE) {
   connectAuthEmulator(auth, "http://127.0.0.1:9099");
   connectDatabaseEmulator(db, "127.0.0.1", 9000);
